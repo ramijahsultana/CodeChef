@@ -1,0 +1,1 @@
+gets;$<.map{puts gets.split.sort{_1.to_i&1<=>_2.to_i&1}}
