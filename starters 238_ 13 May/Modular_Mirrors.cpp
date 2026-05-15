@@ -7,36 +7,29 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t;
-    cin >> t;
+    int T;
+    cin >> T;
 
-    while (t--)
+    while (T--)
     {
-      int n;
-        long long m;
-        cin >> n >> m;
-if(n == 1)
+        int N;
+        long long M;
+        cin >> N >> M;
+
+        if (N % 3 != 2)
         {
-            cout << -1 << "\n";
+            cout << -1 << '\n';
             continue;
         }
 
-        vector<long long> a(n);
+        vector<long long> pattern = {1, 1, 0, M - 1, M - 1, 0};
 
-        a[0] = 1;
-        a[1] = 1;
-
-        for(int i = 2; i < n; i++)
+        for (int i = 0; i < N; i++)
         {
-            a[i] = (a[i-1] - a[i-2]) % m;
-            if(a[i] < 0) a[i] += m;
+            cout << pattern[i % 6] << " ";
         }
 
-        for(int i = 0; i < n; i++)
-        {
-            cout << a[i] << " ";
-        }
-        cout << "\n";
+        cout << '\n';
     }
 
     return 0;
