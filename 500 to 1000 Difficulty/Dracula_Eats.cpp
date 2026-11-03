@@ -13,7 +13,7 @@ int main()
     {
         int n;
         cin >> n;
-        int ans = (n >= 2) ? (n - 1) / 7 : 0;
+        int ans = (n + 5) / 7;
         
         cout << ans << "\n";
     
