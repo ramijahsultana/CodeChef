@@ -13,12 +13,9 @@ int main()
     {
         int x,y;
         cin >> x >> y;
-        int c = y/x;
-        int v = y%x;
-        if(x == y)
-            cout << "0\n";
-        else
-            cout << c << "\n";
+        ll ans = (y - 1) / x;
+        
+        cout << ans << "\n";
 
     }
 
