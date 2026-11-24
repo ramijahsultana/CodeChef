@@ -1,78 +1,49 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <cmath>
 using namespace std;
-#define ll long long
-#define pb push_back
-int main()
-{
+
+int main() {
+    
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-    int a = 0, b = 0;
-    int mx = 0;
-    int aval = 0, bval = 0;
-    int x, y;
-    cin >> x >> y;
-    aval += x;
-    bval += y;
-    t--;
-    int v = 0;
-    int val = 0;
-    if(x > y)
-    {
-        val = x-y;
-        mx = val;
-        v = 1;
-    }
-    else if(y > x)
-    {
-        val = y-x;
-        mx = val;
-        v = 2;
-    }
-    
-    while(t--)
-    {
-        int x, y;
-        cin >> x >> y;
-        
+    int n;
+    cin >> n;
+
+    int cum_score1 = 0;
+    int cum_score2 = 0;
+    int max_lead = 0;
+    int winner = 0;
+
+    for (int i = 0; i < n; i++) {
+        int s, t;
+        cin >> s >> t;
+
        
-        
-        if(aval > bval)
-        {
-            a++;
-            aval += x;
-            val = x-y;
-            if(val > mx)
-            {
-                mx = val;
-                v = 1;
-            }
-        }
-        else if(aval < bval)
-        {
-            b++;
-            bval += y;
-            val = y-x;
-            if(val > mx)
-            {
-                mx = val;
-                v = 2;
-            }
+        cum_score1 += s;
+        cum_score2 += t;
+
+       
+        int current_lead = 0;
+        int current_leader = 0;
+
+        if (cum_score1 > cum_score2) {
+            current_lead = cum_score1 - cum_score2;
+            current_leader = 1;
+        } else {
+            current_lead = cum_score2 - cum_score1;
+            current_leader = 2;
         }
 
+     
+        if (current_lead > max_lead) {
+            max_lead = current_lead;
+            winner = current_leader;
+        }
     }
 
     
-    if(v == 1)
-    {
-        cout << "1 " << mx << "\n";
-    }
-    else
-    {
-        cout << "2 " << mx << "\n";
-    }
+    cout << winner << " " << max_lead << "\n";
 
     return 0;
 }
